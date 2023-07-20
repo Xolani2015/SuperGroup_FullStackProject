@@ -13,7 +13,7 @@
   
   .product {
     border-radius: 15px;
-    width: 300px;
+    width: 250px;
     height: 350px;
     margin: 100px;
     display: flex;
@@ -23,7 +23,7 @@
   }
   
   .product img {
-    width: 400px;
+    width: 300px;
   }
   
   .product .description {
