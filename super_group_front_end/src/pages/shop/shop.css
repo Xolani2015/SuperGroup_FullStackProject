@@ -35,7 +35,7 @@
     cursor: pointer;
   }
   
-  .addToCartBttn {
+  .addToCartButton {
     background-color: transparent;
     border: 2px solid rgb(19, 19, 19);
     min-width: 100px;
@@ -46,7 +46,7 @@
     border-radius: 15px;
   }
   
-  .addToCartBttn:hover {
+  .addToCartButton:hover {
     background-color: rgb(19, 19, 19);
     color: white;
     cursor: pointer;
