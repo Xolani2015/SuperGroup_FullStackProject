@@ -20,12 +20,11 @@ class ProductModel {
 
 
 
-export const Shop = () => {
+export const Shop = ({ productModels, setProductModels }) => {
     const [data, setData] = useState([])
-    const [productModels, setProductModels] = useState([]);
+    //const [productModels, setProductModels] = useState([]);
     useEffect(()=>{
         axios.get('https://localhost:7270/api/Shop/ProductList')
-      //  .then(res => setData(res.data.productList))
       .then((res) => {
         const productList = res.data.productList;
         const models = productList.map((product) => (
@@ -44,8 +43,6 @@ export const Shop = () => {
         .catch(err => console.log(err));
     },[])
 
-
-// console.log(productModels)
     return (
       <div className="shop">
         <div className="shopTitle">
@@ -53,18 +50,7 @@ export const Shop = () => {
         </div>
 
         <div className="products">
-        {productModels.map((product) => (
-        <div key={product.id}>  
-          <h3>{product.name}</h3>
-          <p>Image:{product.image}</p>
-          <p>Price: R{product.actualPrice}</p>
-          <p>Discounted Price: {product.discountedPrice}</p>
-        </div>
-      ))}
-        </div>
-  
-        <div className="products">
-          {PRODUCTS.map((product) => (
+          {productModels.map((product) => (
             <Product data={product} />
           ))}
         </div>

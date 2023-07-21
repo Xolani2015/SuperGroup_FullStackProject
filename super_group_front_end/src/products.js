@@ -4,57 +4,57 @@ import product1 from './assets/products/m210.webp';
 export const PRODUCTS = [
     {
         id: 1, 
-        productName: 'Telematics', 
+        name: 'Telematics', 
         actualPrice: 999.0, 
-        productImage: product1
+        image: product1
     },
     {
         id: 2, 
-        productName: 'Telematics', 
+        name: 'Telematics', 
         actualPrice: 999.0, 
-        productImage: product1
+        image: product1
     },
     {
         id: 3, 
-        productName: 'Telematics', 
+        name: 'Telematics', 
         actualPrice: 999.0, 
-        productImage: product1
+        image: product1
     },
     {
         id: 4, 
-        productName: 'Telematics', 
+        name: 'Telematics', 
         actualPrice: 999.0, 
-        productImage: product1
+        image: product1
     },
     {
         id: 5, 
-        productName: 'Telematics', 
+        name: 'Telematics', 
         actualPrice: 999.0, 
-        productImage: product1
+        image: product1
     },
     {
         id: 6, 
-        productName: 'Telematics', 
+        name: 'Telematics', 
         actualPrice: 999.0, 
-        productImage: product1
+        image: product1
     },
     {
         id: 6, 
-        productName: 'Telematics', 
+        name: 'Telematics', 
         actualPrice: 999.0, 
-        productImage: product1
+        image: product1
     },
     {
         id: 7, 
-        productName: 'Telematics', 
+        name: 'Telematics', 
         price: 999.0, 
-        productImage: product1
+        image: product1
     },
 
     {
         id: 8, 
-        productName: 'Telematics', 
+        name: 'Telematics', 
         actualPrice: 999.0, 
-        productImage: product1
+        image: product1
     },
 ]

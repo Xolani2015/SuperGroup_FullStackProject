@@ -5,11 +5,11 @@ import { CartItem } from "./cart-item";
 import { useNavigate } from "react-router-dom";
 
 import "./cart.css";
-export const Cart = () => {
+export const Cart = ({ productModels }) => {
   const { cartItems, getTotalCartAmount, checkout } = useContext(AppContext);
   const totalAmount = getTotalCartAmount();
-
   const navigate = useNavigate();
+
 
   return (
     <div className="cart">
@@ -17,7 +17,7 @@ export const Cart = () => {
         <h1>Your Cart Items</h1>
       </div>
       <div className="cart">
-        {PRODUCTS.map((product) => {
+        {productModels.map((product) => {
           if (cartItems[product.id] !== 0) {
             return <CartItem data={product} />;
           }
