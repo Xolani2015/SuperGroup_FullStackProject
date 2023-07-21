@@ -7,11 +7,10 @@ import {Shop} from './pages/shop/shop'
 import { AppContextProvider } from './context/appContext';
 
 function App() {
+ 
   return (
     <div className="App">
       <AppContextProvider>
-
-     
         <Router> 
           <Navbar></Navbar>
           <Routes> 

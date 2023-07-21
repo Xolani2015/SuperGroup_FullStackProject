@@ -3,7 +3,7 @@ import {AppContext} from "../../context/appContext"
 
 
 export const Product = (props) => {
- const { id, productName, price, productImage} = props.data;
+ const { id, productName, actualPrice, productImage} = props.data;
  const { addToCart, cartItems} = useContext(AppContext);
  const cartItemAmount = cartItems[id];
  return (
@@ -13,8 +13,9 @@ export const Product = (props) => {
         <p>
           <b>{productName}</b>
         </p>
-        <p> R{price}</p>
+        <p> R{actualPrice}</p>
       </div>
+
       <button className="addToCartButton" onClick={()=> addToCart(id)}>Add to Cart { cartItemAmount > 0 && <> ({cartItemAmount})</>} </button>
     </div>
   );
