@@ -5,8 +5,6 @@ import "./shop.css";
 import axios from "axios";
 
 
-
-
 class ProductModel {
   constructor(id, name, image, actualPrice, discountedPrice) {
     this.id = id;
@@ -16,7 +14,6 @@ class ProductModel {
     this.discountedPrice = discountedPrice;
   }
 }
-
 
 
 
