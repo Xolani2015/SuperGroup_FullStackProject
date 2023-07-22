@@ -9,10 +9,14 @@ import Swal from 'sweetalert2'
 
 import "./cart.css";
 export const Cart = ({ productModels }) => {
-  const { cartItems, getTotalCartAmount,  } = useContext(AppContext);
+  const { cartItems, getTotalCartAmount, checkout } = useContext(AppContext);
   const totalAmount = getTotalCartAmount();
   const navigate = useNavigate();
+  
 
+  const handleClose = () => { 
+    checkout()
+  }
 
   const handleCheckout = (cartitems) => { 
     const selectedProducts = [];
@@ -33,6 +37,7 @@ export const Cart = ({ productModels }) => {
           title: 'Order has been placed',
           showConfirmButton: false,
           confirmButtonText: 'Yes, delete it!',
+          onClose: handleClose(),
         })
 
       }else{
