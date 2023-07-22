@@ -13,7 +13,12 @@ export const Cart = ({ productModels }) => {
 
 
   const handleCheckout = (cartitems) => { 
-    
+    const selectedProducts = [];
+    productModels.map((product) => {
+      if (cartItems[product.id] !== 0) {
+        selectedProducts.push(product);
+      }
+    })
     // const data = { 
     //   products: cartitems
     // };
@@ -25,7 +30,7 @@ export const Cart = ({ productModels }) => {
     //     alert('No item added')
     //   }
     // }).catch(err => console.log(err));
-    console.log(cartitems)
+    console.log(selectedProducts)
   }
 
 
@@ -48,10 +53,8 @@ export const Cart = ({ productModels }) => {
           <button onClick={() =>  navigate("/checkout")
         }> Continue Shopping </button>
           <button
-            onClick={() => {
-       
+            onClick={() => { 
               handleCheckout(cartItems)
-             console.log(cartItems)
             }}
           >
             {" "}
