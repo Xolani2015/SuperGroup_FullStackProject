@@ -7,7 +7,7 @@ import axios from "axios";
 
 import "./cart.css";
 export const Cart = ({ productModels }) => {
-  const { cartItems, getTotalCartAmount, checkout } = useContext(AppContext);
+  const { cartItems, getTotalCartAmount,  } = useContext(AppContext);
   const totalAmount = getTotalCartAmount();
   const navigate = useNavigate();
 
@@ -16,20 +16,20 @@ export const Cart = ({ productModels }) => {
     const selectedProducts = [];
     productModels.map((product) => {
       if (cartItems[product.id] !== 0) {
-        selectedProducts.push(product);
+        for(let i = 0; i<cartItems[product.id]; i++){
+          selectedProducts.push(product);
+        }  
       }
     })
-    // const data = { 
-    //   products: cartitems
-    // };
-    // axios.post('https://localhost:7270/api/Shop/Checkout', data).then((result)=>{
-    //   if(result.data.statusCode === 200){
-    //     alert('Order Submited')
-    //   //  navigate("/")
-    //   }else{
-    //     alert('No item added')
-    //   }
-    // }).catch(err => console.log(err));
+
+    axios.post('https://localhost:7270/api/Shop/Checkout', selectedProducts).then((result)=>{
+      if(result.data.statusCode === 200){
+        alert('Order Submited')
+      //  navigate("/")
+      }else{
+        alert('No item added')
+      }
+    }).catch(err => console.log(err));
     console.log(selectedProducts)
   }
 
