@@ -6,6 +6,8 @@ import {Navbar} from "./components/navbar"
 import {Cart} from './pages/cart/cart'
 import {Shop} from './pages/shop/shop'
 import { AppContextProvider } from './context/appContext';
+import Swal from 'sweetalert2'
+
 
 function App() {
   const [productModels, setProductModels] = useState([]);

@@ -4,6 +4,8 @@ import { PRODUCTS } from "../../products";
 import { CartItem } from "./cart-item";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import SweetAlert2 from 'react-sweetalert2';
+import Swal from 'sweetalert2'
 
 import "./cart.css";
 export const Cart = ({ productModels }) => {
@@ -22,10 +24,17 @@ export const Cart = ({ productModels }) => {
       }
     })
 
+
     axios.post('https://localhost:7270/api/Shop/Checkout', selectedProducts).then((result)=>{
       if(result.data.statusCode === 200){
-        alert('Order Submited')
-      //  navigate("/")
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Order has been placed',
+          showConfirmButton: false,
+          confirmButtonText: 'Yes, delete it!',
+        })
+
       }else{
         alert('No item added')
       }
