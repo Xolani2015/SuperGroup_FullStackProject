@@ -1,5 +1,4 @@
 import React, {Fragment, useEffect, useState } from "react"; 
-import { PRODUCTS } from "../../products";
 import { Product } from "./product";
 import "./shop.css";
 import axios from "axios";
@@ -19,7 +18,6 @@ class ProductModel {
 
 export const Shop = ({ productModels, setProductModels }) => {
     const [data, setData] = useState([])
-    //const [productModels, setProductModels] = useState([]);
     useEffect(()=>{
         axios.get('https://localhost:7270/api/Shop/ProductList')
       .then((res) => {
