@@ -40,8 +40,13 @@ export const Cart = ({ productModels }) => {
           onClose: handleClose(),
         })
 
+
+
       }else{
-        alert('No item added')
+        Swal.fire({
+          icon: 'error',    
+          text: 'Internet Connection Error!',
+        })
       }
     }).catch(err => console.log(err));
     console.log(selectedProducts)
