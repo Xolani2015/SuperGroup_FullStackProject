@@ -1,14 +1,9 @@
 import React, {Fragment, useEffect, useState } from "react"; 
 import './orders.css'
 import { ForwardIcon  } from  '../../components/forward_icon';
-import product1 from '../../assets/products/1.png';
+
 import axios from "axios";
-import SumsangProduct1 from '../../assets/products/sumsang1.webp';
-import hpProduct1 from '../../assets/products/hp1.png';
-import BeatsProduct1 from '../../assets/products/beats1.webp';
-import HuaweiProduct1 from '../../assets/products/huawie1.png';
-import SumsangProduct2 from '../../assets/products/sumsang1.webp';
-import SonyProduct1 from '../../assets/products/speakers.PNG';
+
 
 class OrderModel {
     constructor(id, numProducts, totalAmount, date, active,firstProductImage,orderCode,) {
@@ -34,42 +29,17 @@ export const Orders = () => {
           order.numProducts,
           order.totalAmount,
           order.date,
-          order.firstProductImage
+          order.active,
+          order.firstProductImage,
+          order.orderCode,
         )
       ));
       setData(models);
+      console.log(orderData);
     })
       .catch(err => console.log(err));
   },[])
 
-    let display_image;
-    switch (image) {
-      case 'SumsangProduct1':
-       display_image = SumsangProduct1;
-       break;
-       case 'hpProduct1':
-       display_image =hpProduct1;
-       break;
-       case 'BeatsProduct1':
-       display_image = BeatsProduct1;
-       break;
-       case 'HuaweiProduct1':
-       display_image = HuaweiProduct1;
-       break;
-       case 'SumsangProduct2':
-       display_image =SumsangProduct2;
-        break;
-      case 'SonyProduct1':
-       display_image = SonyProduct1;
-        break;
-      default:
-       display_image = BeatsProduct1;
-    }
-
-    const data = [
-        { id: 1, text1: 'First Text', image: 'path/to/image.jpg', text2: 'Second Text', text3: 'Third Text' },
-        // Add more data rows as needed
-      ];
   return (
     <div className="orders">
       <h1>Your orders</h1>
@@ -77,49 +47,28 @@ export const Orders = () => {
       <table className="custom-table">
         <thead>
           <tr>
-            <th>PRODUCT</th>
+           
             <th>QUATITIY</th>
             <th>DATE</th>
             <th>TOTAL</th>
-            <th>ITEMS</th>
-        
+            <th>ITEMS</th> 
+            <th>STATUS</th> 
           </tr>
         </thead>
         <tbody>
         {
   orderData.map((item) => {
-    console.log(item.image)
-    switch (item.image) {
-      case 'SumsangProduct1':
-       display_image = SumsangProduct1;
-       break;
-       case 'hpProduct1':
-       display_image =hpProduct1;
-       break;
-       case 'BeatsProduct1':
-       display_image = BeatsProduct1;
-       break;
-       case 'HuaweiProduct1':
-       display_image = HuaweiProduct1;
-       break;
-       case 'SumsangProduct2':
-       display_image =SumsangProduct2;
-        break;
-      case 'SonyProduct1':
-       display_image = SonyProduct1;
-        break;
-      default:
-       display_image = BeatsProduct1;
-    }
+    let display_image;
+    console.log(item.date)
+    const tdContent = item.active ?  "Completed" :"In Progress" ;
     return (
       <React.Fragment key={item.id}>
         <tr>
-          <td>
-            <img src={display_image} alt="Image" className="table-image" />
-          </td>
-          <td>{item.numProducts}</td>
+        
+          <td>{item.numProducts} Items</td>
           <td>{item.date}</td>
-          <td>{item.totalAmount}</td>
+          <td>R {item.totalAmount}.00</td>
+          <td>{tdContent}</td>
           <td>
             <div className="circle-container">
               <ForwardIcon />

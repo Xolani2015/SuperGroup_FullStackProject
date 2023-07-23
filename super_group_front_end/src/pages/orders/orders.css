@@ -4,8 +4,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-left: 70px; /* Adjust the value for left padding */
-    padding-right: 70px; /* Adjust the value for right padding */
+    padding-left: 150px; /* Adjust the value for left padding */
+    padding-right: 150px; /* Adjust the value for right padding */
   }
 /* CustomTable.css */
 
@@ -48,7 +48,7 @@
     padding: 8px;
     color: grey; /* Change text color to grey */
     font-weight: normal; /* Set font weight to normal */
-    height: 88px; /* Increase the row height by 88 pixels */
+    height: 60px; /* Increase the row height by 88 pixels */
   }
   
   .table-image {
