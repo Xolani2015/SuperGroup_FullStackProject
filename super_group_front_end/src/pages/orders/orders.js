@@ -1,9 +1,43 @@
-import React from 'react';
+import React, {Fragment, useEffect, useState } from "react"; 
 import './orders.css'
 import { ForwardIcon  } from  '../../components/forward_icon';
 import product1 from '../../assets/products/1.png';
+import axios from "axios";
+
+class OrderModel {
+    constructor(id, numProducts, totalAmount, date, active,firstProductImage,orderCode,) {
+      this.id = id;
+      this.numProducts = numProducts;
+      this.totalAmount = totalAmount;
+      this.date = date;
+      this.active = active;
+      this.firstProductImage = firstProductImage;
+      this.orderCode = orderCode;
+    }
+  }
 
 export const Orders = () => {
+
+  const [orderData, setData] = useState([])
+  useEffect(()=>{
+      axios.get('https://localhost:7270/api/Shop/OrderList')
+    .then((res) => {
+      const orderList = res.data.orderList;
+      const models = orderList.map((order) => (
+        new OrderModel(
+          order.id,
+          order.numProducts,
+          order.totalAmount,
+          order.date,
+          order.firstProductImage
+        )
+      ));
+      setData(models);
+      console.log(orderData);
+   
+    })
+      .catch(err => console.log(err));
+  },[])
 
     let display_image;
     // switch (image) {
@@ -33,26 +67,26 @@ export const Orders = () => {
           <tr>
             <th>PRODUCT</th>
             <th>QUATITIY</th>
-            <th>DATEs</th>
+            <th>DATE</th>
             <th>TOTAL</th>
             <th>ITEMS</th>
         
           </tr>
         </thead>
         <tbody>
-          {data.map((item) => (
+          {orderData.map((item) => (
             <React.Fragment key={item.id}>
               <tr>
               <td>
                   <img src={product1} alt="Image" className="table-image" />
                 </td>
-                <td>{item.text1}</td>
-                <td>{item.text2}</td>
-                <td>{item.text2}</td>
+                <td>{item.numProducts}</td>
+                <td>{item.date}</td>
+                <td>{item.totalAmount}</td>
                 <td>
                 <div className="circle-container">
-        <ForwardIcon />
-      </div>
+                <ForwardIcon />
+                </div>
                 </td>
               </tr>
             </React.Fragment>
