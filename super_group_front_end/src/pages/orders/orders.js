@@ -33,6 +33,7 @@ export const Orders = () => {
           <tr>
             <th>PRODUCT</th>
             <th>QUATITIY</th>
+            <th>DATE</th>
             <th>TOTAL</th>
             <th>ITEMS</th>
         
@@ -46,9 +47,8 @@ export const Orders = () => {
                   <img src={product1} alt="Image" className="table-image" />
                 </td>
                 <td>{item.text1}</td>
-               
                 <td>{item.text2}</td>
-    
+                <td>{item.text2}</td>
                 <td>
                 <div className="circle-container">
         <ForwardIcon />
