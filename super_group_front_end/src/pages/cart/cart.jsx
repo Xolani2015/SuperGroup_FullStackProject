@@ -7,6 +7,7 @@ import axios from "axios";
 import SweetAlert2 from 'react-sweetalert2';
 import Swal from 'sweetalert2'
 
+
 import "./cart.css";
 export const Cart = ({ productModels }) => {
   const { cartItems, getTotalCartAmount, checkout } = useContext(AppContext);
@@ -39,9 +40,6 @@ export const Cart = ({ productModels }) => {
           confirmButtonText: 'Yes, delete it!',
           onClose: handleClose(),
         })
-
-
-
       }else{
         Swal.fire({
           icon: 'error',    
