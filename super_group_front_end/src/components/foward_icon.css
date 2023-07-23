@@ -1,0 +1,14 @@
+.forward-icon {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .circle-container {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: grey;
+    padding: 8px; /* Adjust the padding as needed to size the icon within the circle */
+  }
+  
