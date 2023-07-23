@@ -3,6 +3,12 @@ import './orders.css'
 import { ForwardIcon  } from  '../../components/forward_icon';
 import product1 from '../../assets/products/1.png';
 import axios from "axios";
+import SumsangProduct1 from '../../assets/products/sumsang1.webp';
+import hpProduct1 from '../../assets/products/hp1.png';
+import BeatsProduct1 from '../../assets/products/beats1.webp';
+import HuaweiProduct1 from '../../assets/products/huawie1.png';
+import SumsangProduct2 from '../../assets/products/sumsang1.webp';
+import SonyProduct1 from '../../assets/products/speakers.PNG';
 
 class OrderModel {
     constructor(id, numProducts, totalAmount, date, active,firstProductImage,orderCode,) {
@@ -17,7 +23,6 @@ class OrderModel {
   }
 
 export const Orders = () => {
-
   const [orderData, setData] = useState([])
   useEffect(()=>{
       axios.get('https://localhost:7270/api/Shop/OrderList')
@@ -33,8 +38,6 @@ export const Orders = () => {
         )
       ));
       setData(models);
-      console.log(orderData);
-   
     })
       .catch(err => console.log(err));
   },[])
@@ -74,23 +77,50 @@ export const Orders = () => {
           </tr>
         </thead>
         <tbody>
-          {orderData.map((item) => (
-            <React.Fragment key={item.id}>
-              <tr>
-              <td>
-                  <img src={product1} alt="Image" className="table-image" />
-                </td>
-                <td>{item.numProducts}</td>
-                <td>{item.date}</td>
-                <td>{item.totalAmount}</td>
-                <td>
-                <div className="circle-container">
-                <ForwardIcon />
-                </div>
-                </td>
-              </tr>
-            </React.Fragment>
-          ))}
+        {
+  orderData.map((item) => {
+    console.log(item.image)
+    switch (item.image) {
+      case 'SumsangProduct1':
+       display_image = SumsangProduct1;
+       break;
+       case 'hpProduct1':
+       display_image =hpProduct1;
+       break;
+       case 'BeatsProduct1':
+       display_image = BeatsProduct1;
+       break;
+       case 'HuaweiProduct1':
+       display_image = HuaweiProduct1;
+       break;
+       case 'SumsangProduct2':
+       display_image =SumsangProduct2;
+        break;
+      case 'SonyProduct1':
+       display_image = SonyProduct1;
+        break;
+      default:
+       display_image = BeatsProduct1;
+    }
+    return (
+      <React.Fragment key={item.id}>
+        <tr>
+          <td>
+            <img src={display_image} alt="Image" className="table-image" />
+          </td>
+          <td>{item.numProducts}</td>
+          <td>{item.date}</td>
+          <td>{item.totalAmount}</td>
+          <td>
+            <div className="circle-container">
+              <ForwardIcon />
+            </div>
+          </td>
+        </tr>
+      </React.Fragment>
+    );
+  })
+}
         </tbody>
       </table>
     </div>
