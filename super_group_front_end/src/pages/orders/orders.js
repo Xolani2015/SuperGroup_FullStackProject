@@ -42,6 +42,7 @@ export const Orders = () => {
   return (
     <div className="orders">
       <h1>Your orders</h1>
+      <div className="space"></div>
        <div className="custom-table-container">
       <table className="custom-table">
         <thead>
@@ -49,9 +50,12 @@ export const Orders = () => {
            
             <th>QUATITIY</th>
             <th>DATE</th>
+       
+          
+            <th>DELIVERY DATE</th> 
+            <th>STATUS</th> 
             <th>TOTAL</th>
             <th>ITEMS</th> 
-            <th>STATUS</th> 
           </tr>
         </thead>
         <tbody>
@@ -64,10 +68,12 @@ export const Orders = () => {
       <React.Fragment key={item.id}>
         <tr>  
           <td>{item.numProducts} Items</td>
-          <td>{item.date}</td>
-          <td>R {item.totalAmount}.00</td>
+          <td>{item.date}</td>    
           <td>{tdContent}</td>
+          <td>N/A</td>
+          <td>R {item.totalAmount}.00</td>
           <td>
+         
             <div className="circle-container">
               <ForwardIcon />
             </div>

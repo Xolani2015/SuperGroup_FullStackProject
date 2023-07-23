@@ -4,8 +4,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-left: 150px; /* Adjust the value for left padding */
-    padding-right: 150px; /* Adjust the value for right padding */
+    padding-left: 120px; /* Adjust the value for left padding */
+    padding-right: 120px; /* Adjust the value for right padding */
   }
 /* CustomTable.css */
 
@@ -22,13 +22,14 @@
   }
   
   .custom-table th {
-    background-color: white; /* Change header color to white */
+    background-color: rgb(255, 255, 255); /* Change header color to white */
     text-align: left; /* Position header text to the left */
     border-top: none; /* Remove the top line in the header row */
-    color: grey; /* Change header text color to black */
+    color: rgb(110, 110, 110); /* Change header text color to black */
     font-weight: normal; /* Set font weight to normal */
     padding-bottom: 10px; /* Add bottom padding to the header text */
     position: relative; /* Set position to relative for pseudo-element */
+    height: 60px; 
   }
   
   .custom-table th::after {
@@ -67,6 +68,10 @@
   
   .forward-icon {
     margin-left: 5px; /* Add some space between the text and icon */
+  }
+
+  .space{
+    height: 25px;
   }
   
   
