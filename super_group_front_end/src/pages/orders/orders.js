@@ -43,19 +43,28 @@ export const Orders = () => {
   },[])
 
     let display_image;
-    // switch (image) {
-    //     case 'admin':
-    //      display_image = product1;
-    //       break;
-    //     case 'user':
-    //      display_image =product1;
-    //       break;
-    //     case 'guest':
-    //      display_image = product1;
-    //       break;
-    //     default:
-    //      display_image = product1;
-    //   }
+    switch (image) {
+      case 'SumsangProduct1':
+       display_image = SumsangProduct1;
+       break;
+       case 'hpProduct1':
+       display_image =hpProduct1;
+       break;
+       case 'BeatsProduct1':
+       display_image = BeatsProduct1;
+       break;
+       case 'HuaweiProduct1':
+       display_image = HuaweiProduct1;
+       break;
+       case 'SumsangProduct2':
+       display_image =SumsangProduct2;
+        break;
+      case 'SonyProduct1':
+       display_image = SonyProduct1;
+        break;
+      default:
+       display_image = BeatsProduct1;
+    }
 
     const data = [
         { id: 1, text1: 'First Text', image: 'path/to/image.jpg', text2: 'Second Text', text3: 'Third Text' },
