@@ -2,24 +2,15 @@ import React, {Fragment, useEffect, useState } from "react";
 import { Product } from "./product";
 import "./shop.css";
 import axios from "axios";
-
-
-class ProductModel {
-  constructor(id, name, image, actualPrice, discountedPrice) {
-    this.id = id;
-    this.name = name;
-    this.image = image;
-    this.actualPrice = actualPrice;
-    this.discountedPrice = discountedPrice;
-  }
-}
-
+import { useParams } from 'react-router-dom';
 
 
 export const Shop = ({ productModels, setProductModels,  categoryProp },) => {
-  console.log(">>>>>>>>>>");
-    console.log(categoryProp);
-    console.log(">>>>>>>>>>");
+  const { category } = useParams();
+    // console.log(">>>>>>>>>>");
+    // console.log(category);
+    // console.log(">>>>>>>>>>");
+
     const [data, setData] = useState([])
     useEffect(()=>{
         axios.get('https://localhost:7270/api/Shop/ProductList')
@@ -31,11 +22,16 @@ export const Shop = ({ productModels, setProductModels,  categoryProp },) => {
             product.name,
             product.image,
             product.actualPrice,
-            product.discountedPrice
+            product.discountedPrice,
+            product.category
           )
         ));
         setProductModels(models);
-        console.log(productModels);
+        console.log(">>>>>>>>>>");
+
+        // console.log(">>>>>>>>>>");
+         console.log(productModels);
+          console.log(">>>>>>>>>>");
      
       })
         .catch(err => console.log(err));
@@ -49,9 +45,23 @@ export const Shop = ({ productModels, setProductModels,  categoryProp },) => {
 
         <div className="products">
           {productModels.map((product) => (
-            <Product data={product} />
+            category == 'All' ? <Product data={product} /> :  
+            product.category == category ? <Product data={product}/> :
+            product.category == category ? <Product data={product}/> : null
+         
           ))}
         </div>
       </div>
     );
   };
+
+  class ProductModel {
+    constructor(id, name, image, actualPrice, discountedPrice, category) {
+      this.id = id;
+      this.name = name;
+      this.image = image;
+      this.actualPrice = actualPrice;
+      this.discountedPrice = discountedPrice;
+      this.category = category;
+    }
+  }

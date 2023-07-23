@@ -15,10 +15,10 @@ export const Navbar = () => {
         <div className="dropdown">
           <button className="dropbtn">Shop</button>
           <div className="dropdown-content">
-            <Link to="/">All</Link>
-            <Link to="/category2">CellPhones</Link>
-            <Link to="/category3">Laptops</Link>
-            <Link to="/category3">HeadPhones</Link>
+            <Link to="/All">All</Link>
+            <Link to="/Cellphone">Cellphones</Link>
+            <Link to="/Laptop">Laptops</Link>
+            <Link to="/HeadPhones">Headphones</Link>
           </div>
         </div>
         </div>
