@@ -1,7 +1,6 @@
 import React, {Fragment, useEffect, useState } from "react"; 
 import './orders.css'
 import { ForwardIcon  } from  '../../components/forward_icon';
-
 import axios from "axios";
 
 
@@ -63,8 +62,7 @@ export const Orders = () => {
     const tdContent = item.active ?  "Completed" :"In Progress" ;
     return (
       <React.Fragment key={item.id}>
-        <tr>
-        
+        <tr>  
           <td>{item.numProducts} Items</td>
           <td>{item.date}</td>
           <td>R {item.totalAmount}.00</td>

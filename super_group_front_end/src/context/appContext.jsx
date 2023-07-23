@@ -14,11 +14,11 @@ const getDefaultCart = () => {
 export const AppContextProvider = (props) => {
   const [cartItems, setCartItems] = useState(getDefaultCart());
 
-  const getTotalCartAmount = () => {
+  const getTotalCartAmount = (props) => {
     let totalAmount = 0;
     for (const item in cartItems) {
       if (cartItems[item] > 0) {
-        let itemInfo = PRODUCTS.find((product) => product.id === Number(item));
+        let itemInfo = props.find((product) => product.id === Number(item));
         totalAmount += cartItems[item] * itemInfo.actualPrice;
       }
     }

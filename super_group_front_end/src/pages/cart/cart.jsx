@@ -11,7 +11,7 @@ import Swal from 'sweetalert2'
 import "./cart.css";
 export const Cart = ({ productModels }) => {
   const { cartItems, getTotalCartAmount, checkout } = useContext(AppContext);
-  const totalAmount = getTotalCartAmount();
+  const totalAmount = getTotalCartAmount(productModels);
   const navigate = useNavigate();
   
 
@@ -66,7 +66,7 @@ export const Cart = ({ productModels }) => {
 
       {totalAmount > 0 ? (
         <div className="checkout">
-          <p> Subtotal: R{totalAmount} </p>
+          <p> Total Amount: R {totalAmount}.00 </p>
           <button onClick={() =>  navigate("/")
         }> Continue Shopping </button>
           <button
