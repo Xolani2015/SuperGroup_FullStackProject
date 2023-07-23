@@ -33,7 +33,7 @@ export const Orders = () => {
           <tr>
             <th>PRODUCT</th>
             <th>QUATITIY</th>
-            <th>DATE</th>
+            <th>DATEs</th>
             <th>TOTAL</th>
             <th>ITEMS</th>
         

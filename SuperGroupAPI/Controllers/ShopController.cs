@@ -59,6 +59,7 @@ namespace SuperGroupAPI.Controllers
             return response;
         }
 
+
         [HttpPost]
         [Route("Checkout")]
         public Response Checkout(List<Products> products)
@@ -66,9 +67,7 @@ namespace SuperGroupAPI.Controllers
             Response response = new Response();
             if (products.Count != 0)
             {
-
-
-                
+       
                // SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("SuperGroupCon").ToString());
                 if (products != null)
                 {
@@ -91,31 +90,10 @@ namespace SuperGroupAPI.Controllers
 
                     bool Active = true;
 
+                    string sgCode = RandomNumberGenerator.GenerateRandomSGCODE();
 
-
-                    //   SqlCommand cmd = new SqlCommand("INSERT INTO tblOrders (numProducts, totalAmount, date, active) VALUES ('" + numOfProducts + ", " + totalAmount + "," + date + ", " + Active + "')", connection);
-                    //    connection.Open();
-                    //   int i = cmd.ExecuteNonQuery();
-                    //   connection.Close();
-                    //   if (i > 0)
-                    //   {
-
-
-                    //   }
-                    //   else
-                    //   {
-                    //       response.StatusCode = -1;
-                    //       response.StatusMessage = "Error Occured";
-                    //   }
-                    // }
-                    // else
-                    // {
-                    //   response.StatusCode = -1;
-                    //     response.StatusMessage = "Error Occured";
-
-               
-                        string query = "INSERT INTO tblOrders (numProducts, totalAmount, date, active) " +
-                                       "VALUES (@NumProducts, @TotalAmount, @Date, @Active)";
+                    string query = "INSERT INTO tblOrders (numProducts, totalAmount, date,firstProductImage, active, OrderCode) " +
+                                       "VALUES (@NumProducts, @TotalAmount, @Date, @firstProductImage, @Active, @OrderCode)";
 
                         using (SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("SuperGroupCon").ToString()))
                         using (SqlCommand command = new SqlCommand(query, connection))
@@ -123,51 +101,110 @@ namespace SuperGroupAPI.Controllers
                             command.Parameters.Add("@NumProducts", SqlDbType.Int).Value = numOfProducts;
                             command.Parameters.Add("@TotalAmount", SqlDbType.Decimal).Value = totalAmount;
                             command.Parameters.Add("@Date", SqlDbType.VarChar, 100).Value = date;
+                            command.Parameters.Add("@firstProductImage", SqlDbType.VarChar, 100).Value = products[0].Image  ;
                             command.Parameters.Add("@Active", SqlDbType.Bit).Value = Active;
+                            command.Parameters.Add("@OrderCode", SqlDbType.VarChar, 100).Value = sgCode;
 
-                            try
+                        try
                             {
                                 connection.Open();
                                 int rowsAffected = command.ExecuteNonQuery();
 
-                                if (rowsAffected > 0)
-                                {
-                                    // Data inserted successfully
-                                    response.StatusCode = 200;
-                                    response.StatusMessage = "Order Submitted";
+                          
+
+
+
+                            if (rowsAffected > 0)
+                            {       
+                                    string insertQuery2 = "INSERT INTO tblOrderItems (OrderCode, ProductID) VALUES (@OrderCode, @ProductID)";
+
+                                    foreach (var product in products)
+                                    {
+                                    using (SqlCommand command2 = new SqlCommand(insertQuery2, connection))
+                                    {                                     
+                                        command2.Parameters.AddWithValue("@ProductID", product.Id);
+                                        command2.Parameters.AddWithValue("@OrderCode", sgCode);
+                                   
+                                        int rowsAffected2 = command2.ExecuteNonQuery();
+                                        if (rowsAffected2 > 0)
+                                        {
+                                            // Data inserted successfully
+                                            response.StatusCode = 200;
+                                            response.StatusMessage = "Order Submitted";
+                                        }
+                                        else
+                                        {
+                                            response.StatusCode = -1;
+                                            response.StatusMessage = "Error writting Order Items ";
+                                        }
+                                    }
+                                 
+                                }  
+                                    
                             }
                             else
-                                {
-                                    // No rows were affected, data insertion might have failed
-                             
-                                    response.StatusCode = -1;
-                                    response.StatusMessage = "Data insertion failed!";
+                            {
+                                // Order inserted successfully
+                                response.StatusCode = -1;
+                                response.StatusMessage = "Error Occured";
                             }
                             }
                             catch (Exception ex)
                             {
                                 Console.WriteLine("An error occurred: " + ex.Message);
-
-                            response.StatusCode = -1;
-                            response.StatusMessage = "Data insertion failed!";
+                                response.StatusCode = -1;
+                                response.StatusMessage = "Data insertion failed!";
+                            }
                         }
-                        }
-                    }
-
-                
-
-
-
-
+                }
             }
             return response;
-
         }
 
+        [HttpGet]
+        [Route("OrderList")]
+        public OrderRepsonse GetAllOrders()
+        {
+            List<Order> orderList = new List<Order>();
+            SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("SuperGroupCon").ToString());
+            SqlDataAdapter adapter = new SqlDataAdapter("SELECT*From tblOrders;", connection);
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+            OrderRepsonse response = new OrderRepsonse();
+            if (dt.Rows.Count > 0)
+            {
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    Order order = new Order();
+                    order.Id = Convert.ToInt32(dt.Rows[i]["id"]);
+                    order.numProducts = Convert.ToInt32(dt.Rows[i]["numProducts"]);
+                    order.totalAmount = Convert.ToDecimal(dt.Rows[i]["totalAmount"]);
+                    order.firstProductImage = Convert.ToString(dt.Rows[i]["firstProductImage"]);
+                    order.date = Convert.ToString(dt.Rows[i]["date"]);
+                    order.OrderCode = Convert.ToString(dt.Rows[i]["OrderCode"]);
+                    orderList.Add(order);
+                }
+                if (orderList.Count > 0)
+                {
+                    response.StatusCode = 200;
+                    response.StatusMessage = "Success Retreving ORDERS";
+                    response.orderList = orderList;
+                }
+                else
+                {
+                    response.StatusCode = 100;
+                    response.StatusMessage = "No ORDERS Available";
+                    response.orderList = null;
+                }
+            }
+            else
+            {
+                response.StatusCode = -1;
+                response.StatusMessage = "Error Occured";
+                response.orderList = null;
+            }
+            return response;
         }
-
-
-
-
     }
+}
 
