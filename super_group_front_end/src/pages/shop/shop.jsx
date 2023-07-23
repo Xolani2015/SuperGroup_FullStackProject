@@ -16,7 +16,10 @@ class ProductModel {
 
 
 
-export const Shop = ({ productModels, setProductModels }) => {
+export const Shop = ({ productModels, setProductModels,  categoryProp },) => {
+  console.log(">>>>>>>>>>");
+    console.log(categoryProp);
+    console.log(">>>>>>>>>>");
     const [data, setData] = useState([])
     useEffect(()=>{
         axios.get('https://localhost:7270/api/Shop/ProductList')

@@ -35,6 +35,7 @@ namespace SuperGroupAPI.Controllers
                     product.Image = Convert.ToString(dt.Rows[i]["Image"]);
                     product.ActualPrice = Convert.ToDecimal(dt.Rows[i]["ActualPrice"]);
                     product.DiscountedPrice = Convert.ToDecimal(dt.Rows[i]["DiscountedPrice"]);
+                    product.Category = Convert.ToString(dt.Rows[i]["Category"]);
                     productList.Add(product);
                 }
                 if (productList.Count > 0)

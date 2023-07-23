@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Olani\\source\\repos\\SuperGroupAPI\\SuperGroupAPI.csproj": {}
+    "C:\\Users\\Olani\\Documents\\My Projects\\SuperGroup_FullStackProject\\SuperGroupAPI\\SuperGroupAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Olani\\source\\repos\\SuperGroupAPI\\SuperGroupAPI.csproj": {
+    "C:\\Users\\Olani\\Documents\\My Projects\\SuperGroup_FullStackProject\\SuperGroupAPI\\SuperGroupAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Olani\\source\\repos\\SuperGroupAPI\\SuperGroupAPI.csproj",
+        "projectUniqueName": "C:\\Users\\Olani\\Documents\\My Projects\\SuperGroup_FullStackProject\\SuperGroupAPI\\SuperGroupAPI.csproj",
         "projectName": "SuperGroupAPI",
-        "projectPath": "C:\\Users\\Olani\\source\\repos\\SuperGroupAPI\\SuperGroupAPI.csproj",
+        "projectPath": "C:\\Users\\Olani\\Documents\\My Projects\\SuperGroup_FullStackProject\\SuperGroupAPI\\SuperGroupAPI.csproj",
         "packagesPath": "C:\\Users\\Olani\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Olani\\source\\repos\\SuperGroupAPI\\obj\\",
+        "outputPath": "C:\\Users\\Olani\\Documents\\My Projects\\SuperGroup_FullStackProject\\SuperGroupAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Olani\\AppData\\Roaming\\NuGet\\NuGet.Config",

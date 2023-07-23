@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import {AppContext} from "../../context/appContext"
-import SumsangProduct1 from '../../assets/products/sumsang1.webp';
+import SumsangProduct1 from '../../assets/products/SamsungGalaxyS22.jpg';
 import hpProduct1 from '../../assets/products/hp1.png';
 import BeatsProduct1 from '../../assets/products/beats1.webp';
 import HuaweiProduct1 from '../../assets/products/huawie1.png';
