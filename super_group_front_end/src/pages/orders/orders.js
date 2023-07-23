@@ -2,6 +2,19 @@ import React from 'react';
 import './orders.css'
 import { ForwardIcon  } from  '../../components/forward_icon';
 import product1 from '../../assets/products/1.png';
+import axios from "axios";
+
+class OrderModel {
+    constructor(id, numProducts, totalAmount, date, active,firstProductImage,orderCode,) {
+      this.id = id;
+      this.numProducts = numProducts;
+      this.totalAmount = totalAmount;
+      this.date = date;
+      this.active = active;
+      this.firstProductImage = firstProductImage;
+      this.orderCode = orderCode;
+    }
+  }
 
 export const Orders = () => {
 
@@ -33,7 +46,7 @@ export const Orders = () => {
           <tr>
             <th>PRODUCT</th>
             <th>QUATITIY</th>
-            <th>DATEs</th>
+            <th>DATE</th>
             <th>TOTAL</th>
             <th>ITEMS</th>
         
