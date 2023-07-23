@@ -26,6 +26,7 @@ export const AppContextProvider = (props) => {
   };
 
   const addToCart = (itemId) => {
+    console.log(itemId)
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
   };
 
