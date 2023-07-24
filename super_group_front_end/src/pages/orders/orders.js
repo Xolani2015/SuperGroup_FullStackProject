@@ -4,19 +4,6 @@ import { ForwardIcon  } from  '../../components/forward_icon';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-
-class OrderModel {
-    constructor(id, numProducts, totalAmount, date, active,firstProductImage,orderCode,) {
-      this.id = id;
-      this.numProducts = numProducts;
-      this.totalAmount = totalAmount;
-      this.date = date;
-      this.active = active;
-      this.firstProductImage = firstProductImage;
-      this.orderCode = orderCode;
-    }
-  }
-
 export const Orders = () => {
   const [orderData, setData] = useState([])
   const navigate = useNavigate();
@@ -42,7 +29,7 @@ export const Orders = () => {
   },[])
 
   const handleViewProducts = (id) => { 
-    navigate('/ordersproducts')
+   // navigate('/ordersproducts')
   }
 
   return (
@@ -56,8 +43,6 @@ export const Orders = () => {
            
             <th>QUATITIY</th>
             <th>DATE</th>
-       
-          
             <th>DELIVERY DATE</th> 
             <th>STATUS</th> 
             <th>TOTAL</th>
@@ -103,3 +88,15 @@ export const Orders = () => {
     
   );
 };
+
+class OrderModel {
+  constructor(id, numProducts, totalAmount, date, active,firstProductImage,orderCode,) {
+    this.id = id;
+    this.numProducts = numProducts;
+    this.totalAmount = totalAmount;
+    this.date = date;
+    this.active = active;
+    this.firstProductImage = firstProductImage;
+    this.orderCode = orderCode;
+  }
+}

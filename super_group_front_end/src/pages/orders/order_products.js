@@ -4,33 +4,17 @@ import { ForwardIcon  } from  '../../components/forward_icon';
 import axios from "axios";
 
 
-class OrderModel {
-    constructor(id, numProducts, totalAmount, date, active,firstProductImage,orderCode,) {
-      this.id = id;
-      this.numProducts = numProducts;
-      this.totalAmount = totalAmount;
-      this.date = date;
-      this.active = active;
-      this.firstProductImage = firstProductImage;
-      this.orderCode = orderCode;
-    }
-  }
-
 export const OrderProducts = () => {
   const [orderData, setData] = useState([])
   useEffect(()=>{
-      axios.get('https://localhost:7270/api/Shop/OrderList')
+      axios.get('https://localhost:7270/api/Shop/OrderProducts')
     .then((res) => {
       const orderList = res.data.orderList;
       const models = orderList.map((order) => (
-        new OrderModel(
+        new OrderProductModel(
           order.id,
-          order.numProducts,
-          order.totalAmount,
-          order.date,
-          order.active,
-          order.firstProductImage,
-          order.orderCode,
+          order.ProductID,
+          order.OrderCode,
         )
       ));
       setData(models);
@@ -94,3 +78,13 @@ export const OrderProducts = () => {
     
   );
 };
+
+
+class OrderProductModel {
+    constructor(id, ProductID, OrderCode,) {
+      this.id = id;
+      this.ProductID = ProductID;
+      this.OrderCode = OrderCode;
+
+    }
+  }

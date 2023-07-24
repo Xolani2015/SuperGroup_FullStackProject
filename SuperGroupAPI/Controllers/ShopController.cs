@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using SuperGroupAPI.Models;
 using System.Data;
 using System.Data.SqlClient;
@@ -59,6 +60,83 @@ namespace SuperGroupAPI.Controllers
             }
             return response;
         }
+
+        [HttpGet]
+        [Route("OrderProducts")]
+        public Response GetOrderProducts(string code)
+        {
+         
+            List<OrderProducts> orderProductList = new List<OrderProducts>();
+            SqlConnection connection = new SqlConnection(_configuration.GetConnectionString("SuperGroupCon").ToString());
+            SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM tblOrderItems WHERE OrderCode = @code;", connection);
+            adapter.SelectCommand.Parameters.AddWithValue("@code", code);
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+            OrderProductResponse response = new OrderProductResponse();
+            Response response1 = new Response();
+            if (dt.Rows.Count > 0)
+            {
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    OrderProducts orderProduct = new OrderProducts();
+                    orderProduct.Id = Convert.ToInt32(dt.Rows[i]["Id"]);
+                    orderProduct.ProductId = Convert.ToInt32(dt.Rows[i]["ProductId"]);
+                    orderProduct.OrderCode = Convert.ToString(dt.Rows[i]["OrderCode"]);
+                    orderProductList.Add(orderProduct);
+
+                    int productID = orderProduct.Id;
+                    List<Products> productList = new List<Products>();
+                    SqlDataAdapter adapterProduct = new SqlDataAdapter("SELECT * FROM tblProducts WHERE id = @productID;", connection);
+                    adapterProduct.SelectCommand.Parameters.AddWithValue("@productID", productID);
+                    DataTable dt2 = new DataTable();
+                    adapterProduct.Fill(dt2);
+                    if (dt2.Rows.Count > 0)
+                    {
+                        for (int x = 0; x < dt2.Rows.Count; x++)
+                        {
+                            Products product = new Products();
+                            product.Id = Convert.ToInt32(dt2.Rows[x]["Id"]);
+                            product.Name = Convert.ToString(dt2.Rows[x]["name"]);
+                            productList.Add(product);
+                        }
+                        if(productList.Count > 0)
+                        {
+                            response1.StatusCode = 200;
+                            response1.StatusMessage = "Success Retrieving products";
+                            response1.productList = productList;
+                        }                       
+                    }
+
+
+                }
+                if (orderProductList.Count > 0)
+                {
+                    response.StatusCode = 200;
+                    response.StatusMessage = "Success Retrieving products";
+                    response.orderProductList = orderProductList;
+                }
+                else
+                {
+                    response.StatusCode = 100;
+                    response.StatusMessage = "No products available";
+                    response.orderProductList = null;
+                }
+            }
+            else
+            {
+                response.StatusCode = -1;
+                response.StatusMessage = "Error Occurred";
+                response.orderProductList = null;
+            }
+            return response1;
+        }
+
+
+
+
+
+
+
 
 
         [HttpPost]
