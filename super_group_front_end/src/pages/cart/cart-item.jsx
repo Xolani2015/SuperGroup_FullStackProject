@@ -1,13 +1,13 @@
 import React, { useContext } from "react";
 import { AppContext } from "../../context/appContext";
-import product1 from '../../assets/products/1.png';
-import SumsangProduct1 from '../../assets/products/sumsang1.webp';
-import hpProduct1 from '../../assets/products/hp1.png';
+import SumsangProduct1 from '../../assets/products/SamsungGalaxyS22.jpg';
+import hpProduct1 from '../../assets/products/hp1.jpg';
 import BeatsProduct1 from '../../assets/products/beats1.webp';
 import HuaweiProduct1 from '../../assets/products/huawie1.png';
-import SumsangProduct2 from '../../assets/products/sumsang1.webp';
-import SonyProduct1 from '../../assets/products/speakers.PNG';
-import SonyProduct2 from '../../assets/products/speakers.PNG';
+import ZenbookProduct1 from '../../assets/products/laptop.png';
+import SonyProduct1 from '../../assets/products/headphones.jpg';
+import iphoneProduct1 from '../../assets/products/iphone.jpg';
+import ZenbookProduct2 from '../../assets/products/flip.jpg';
 
 export const CartItem = (props) => {
   const { id, name, actualPrice, image } = props.data;
@@ -28,12 +28,19 @@ export const CartItem = (props) => {
        case 'HuaweiProduct1':
        display_image = HuaweiProduct1;
        break;
-       case 'SumsangProduct2':
-       display_image =SumsangProduct2;
+       case 'AusProduct1':
+       display_image =ZenbookProduct1;
         break;
       case 'SonyProduct1':
        display_image = SonyProduct1;
         break;
+        case 'OppoProduct1':
+          display_image = iphoneProduct1;
+        break;
+        case 'AsusProduct2':
+          display_image = ZenbookProduct2;
+        break;
+        
       default:
        display_image = BeatsProduct1;
     }

@@ -70,7 +70,7 @@ export const Orders = () => {
           <td>{item.numProducts} Items</td>
           <td>{item.date}</td>    
           <td>{tdContent}</td>
-          <td>N/A</td>
+          <td>Pending</td>
           <td>R {item.totalAmount}.00</td>
           <td>
          
@@ -86,6 +86,11 @@ export const Orders = () => {
         </tbody>
       </table>
     </div>
+    <div className="space"></div>
+    <div className="space"></div>
+    <div className="space"></div>
+    <div className="space"></div>
     </div>
+    
   );
 };
