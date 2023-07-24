@@ -73,6 +73,25 @@
   .space{
     height: 25px;
   }
+
+  /* BlackButton.css */
+
+/* Base styles for the black button */
+.black-button {
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Add transition for smooth hover effect */
+}
+
+/* Styles for the hover effect */
+.black-button:hover {
+  background-color: grey;
+}
+
   
   
 

@@ -75,8 +75,8 @@ export const Orders = () => {
           <td>
          
           <button className="black-button">
-      {text}
-    </button>
+             View Products
+         </button>
           </td>
         </tr>
       </React.Fragment>
