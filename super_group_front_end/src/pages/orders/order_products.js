@@ -2,7 +2,6 @@ import React, {Fragment, useEffect, useState } from "react";
 import './orders.css'
 import { ForwardIcon  } from  '../../components/forward_icon';
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 
 class OrderModel {
@@ -17,9 +16,8 @@ class OrderModel {
     }
   }
 
-export const Orders = () => {
+export const OrderProducts = () => {
   const [orderData, setData] = useState([])
-  const navigate = useNavigate();
   useEffect(()=>{
       axios.get('https://localhost:7270/api/Shop/OrderList')
     .then((res) => {
@@ -40,10 +38,6 @@ export const Orders = () => {
     })
       .catch(err => console.log(err));
   },[])
-
-  const handleViewProducts = (id) => { 
-    navigate('/ordersproducts')
-  }
 
   return (
     <div className="orders">
@@ -80,19 +74,16 @@ export const Orders = () => {
           <td>R {item.totalAmount}.00</td>
           <td>
          
-          <button className="black-button"        onClick={() => { 
-              handleViewProducts(item.orderCode)
-
-            }}>
+          <button className="black-button">
              View Products
-          </button>
+         </button>
           </td>
         </tr>
       </React.Fragment>
     );
   })
 }
-      </tbody>
+        </tbody>
       </table>
     </div>
     <div className="space"></div>

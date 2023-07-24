@@ -6,6 +6,7 @@ import {Navbar} from "./components/navbar"
 import {Cart} from './pages/cart/cart'
 import {Shop} from './pages/shop/shop'
 import {Orders} from './pages/orders/orders'
+import {OrderProducts} from './pages/orders/order_products'
 
 import { AppContextProvider } from './context/appContext';
 import Swal from 'sweetalert2'
@@ -23,6 +24,7 @@ function App() {
             <Route path='/:category' element={<Shop productModels={productModels} setProductModels={setProductModels}></Shop>}></Route>
             <Route path='/cart'element={<Cart productModels={productModels} ></Cart>} ></Route>
             <Route path='/orders' element= {<Orders></Orders>}></Route>
+            <Route path='/ordersproducts' element= {<OrderProducts></OrderProducts>}></Route>
           </Routes>
         </Router>
         </AppContextProvider>
