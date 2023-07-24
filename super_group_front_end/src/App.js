@@ -19,7 +19,8 @@ function App() {
         <Router> 
           <Navbar></Navbar>
           <Routes> 
-            <Route path='/:category' element={<Shop productModels={productModels} setProductModels={setProductModels} categoryProp='All'></Shop>}></Route>
+            <Route path='/' element={<Shop productModels={productModels} setProductModels={setProductModels} categoryProp='All'></Shop>}></Route>
+            <Route path='/:category' element={<Shop productModels={productModels} setProductModels={setProductModels}></Shop>}></Route>
             <Route path='/cart'element={<Cart productModels={productModels} ></Cart>} ></Route>
             <Route path='/orders' element= {<Orders></Orders>}></Route>
           </Routes>

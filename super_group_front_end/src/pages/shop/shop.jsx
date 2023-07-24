@@ -7,10 +7,9 @@ import { useParams } from 'react-router-dom';
 
 export const Shop = ({ productModels, setProductModels,  categoryProp },) => {
   const { category } = useParams();
-    // console.log(">>>>>>>>>>");
-    // console.log(category);
-    // console.log(">>>>>>>>>>");
-
+       // console.log(">>>>>>>>>>");
+         console.log(productModels);
+          console.log(">>>>>>>>>>");
     const [data, setData] = useState([])
     useEffect(()=>{
         axios.get('https://localhost:7270/api/Shop/ProductList')
@@ -26,13 +25,7 @@ export const Shop = ({ productModels, setProductModels,  categoryProp },) => {
             product.category
           )
         ));
-        setProductModels(models);
-        console.log(">>>>>>>>>>");
-
-        // console.log(">>>>>>>>>>");
-         console.log(productModels);
-          console.log(">>>>>>>>>>");
-     
+        setProductModels(models);   
       })
         .catch(err => console.log(err));
     },[])
@@ -45,7 +38,7 @@ export const Shop = ({ productModels, setProductModels,  categoryProp },) => {
 
         <div className="products">
           {productModels.map((product) => (
-            category == 'All' ? <Product data={product} /> :  
+            category == 'All' || categoryProp == 'All' ? <Product data={product} /> :  
             product.category == category ? <Product data={product}/> :
             product.category == category ? <Product data={product}/> : null
          

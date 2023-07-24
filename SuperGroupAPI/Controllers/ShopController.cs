@@ -40,8 +40,8 @@ namespace SuperGroupAPI.Controllers
                 }
                 if (productList.Count > 0)
                 {
-                    // response.StatusCode = 200;
-                    // response.StatusMessage = "Success Retreving products";
+                    response.StatusCode = 200;
+                    response.StatusMessage = "Success Retreving products";
                     response.productList = productList;
                 }
                 else

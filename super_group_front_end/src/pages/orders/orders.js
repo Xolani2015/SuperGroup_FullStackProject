@@ -74,9 +74,9 @@ export const Orders = () => {
           <td>R {item.totalAmount}.00</td>
           <td>
          
-            <div className="circle-container">
-              <ForwardIcon />
-            </div>
+          <button className="black-button">
+      {text}
+    </button>
           </td>
         </tr>
       </React.Fragment>
